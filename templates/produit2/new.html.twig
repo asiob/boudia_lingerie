@@ -1,12 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Produit{% endblock %}
-
 {% block body %}
-    <h2>Ajouter un produit</h2>
-
-   {# ## {{ include('produit/_form.html.twig') }} #}
-
+    <div class="container my-4" >
 
 {{ form_start(form) }}
     <div class="my-custom-class-for-errors">
@@ -35,6 +30,5 @@
     </div>
 
 
-
-    <a href="{{ path('app_produit_index') }}">Retour à la liste</a>
 {% endblock %}
+
