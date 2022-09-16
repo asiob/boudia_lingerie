@@ -43,7 +43,10 @@ class ProduitType extends AbstractType
                     "marron" => "marron",
                     "autre" => "autre" ],
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                "attr" => [
+                    "class"=> ""
+                ]
             ])
             ->add('taille'
             , ChoiceType::class,
@@ -87,7 +90,10 @@ class ProduitType extends AbstractType
                     "100F" => "100F" 
                 ],
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                "attr" => [
+                    "class"=> "d-flex"
+                ]
             ])
             ->add('images',
                  FileType::class, [
@@ -106,6 +112,7 @@ class ProduitType extends AbstractType
                     ])
                 ] 
             ])
+            
             ->add('categorie', EntityType::class, [
                 'required' => true,
                 'label' => 'choisir une catégorie',
@@ -118,7 +125,9 @@ class ProduitType extends AbstractType
                         ])
                 ]
             ])
-            ->add('stock')
+            ->add('stock',
+                NULL, [
+             'mapped' => false, ])
                 
         // le bouton
         ->add('save', SubmitType::class, [

@@ -30,7 +30,8 @@ class CategorieController extends AbstractController
         $succes = 'Crée avec succes !';
 
         $form = $this->createForm( CategorieType::class, $categorie);
-
+        
+        //traitement du formulaire
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
