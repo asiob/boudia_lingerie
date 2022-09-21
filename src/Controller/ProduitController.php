@@ -26,12 +26,16 @@ class ProduitController extends AbstractController
     #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProduitRepository $produitRepository): Response
     {
+        // dump($request);
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
+        // dd($form);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $couleur = $form->get('couleur')->getData();
+            $couleur = $form->getData();
+
+            dd($couleur);
             // on recupere les images ajoutées
             $images = $form->get('images')->getData();
             // on boucle sur les images
@@ -46,7 +50,7 @@ class ProduitController extends AbstractController
                 //on stocke l'image dans la base de donnée (son nom)
                 $img = new Image();
                 $img->setNom($fichier);
-                $produit->setCouleur($couleur);
+                // $produit->setCouleur($couleur);
                 $produit->addImage($img);
             }
 

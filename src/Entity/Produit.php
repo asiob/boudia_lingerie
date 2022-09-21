@@ -27,9 +27,6 @@ class Produit
     #[ORM\Column]
     private ?int $quantite = null;
 
-    #[ORM\Column(length: 100)]
-    private ?string $couleur = null;
-
     #[ORM\Column(length: 10)]
     private ?string $taille = null;
 
@@ -46,6 +43,10 @@ class Produit
 
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: CommandeProduit::class, orphanRemoval: true)]
     private Collection $commandeProduits;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Couleur $couleur = null;
 
     
 
@@ -109,17 +110,7 @@ class Produit
         return $this;
     }
 
-    public function getCouleur(): ?string
-    {
-        return $this->couleur;
-    }
 
-    public function setCouleur(string $couleur): self
-    {
-        $this->couleur = $couleur;
-
-        return $this;
-    }
 
     public function getTaille(): ?string
     {
@@ -213,6 +204,18 @@ class Produit
                 $commandeProduit->setProduit(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCouleur(): ?Couleur
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(?Couleur $couleur): self
+    {
+        $this->couleur = $couleur;
 
         return $this;
     }

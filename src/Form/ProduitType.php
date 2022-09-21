@@ -22,32 +22,20 @@ class ProduitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-       // $couleursListe = array ("blanc", "noir", "beige", "rouge", "vert", "rose", "bleu", "gris", "marron", "autre" );
+        
+                    //dd(array_values($couleursListe)[0]);
         $builder
             ->add('titre')
             ->add('description', TextareaType::class)
             ->add('prix')
             // ->add('quantite')
-            ->add('couleur', ChoiceType::class,
-            [
-                'choices' => [
-                    
-                    "blanc" => "blanc", 
-                    "noir" => "noir", 
-                    "beige" => "beige",
-                    "rouge" => "rouge",
-                    "vert" => "vert", 
-                    "rose" => "rose",
-                    "bleu" => "bleu",
-                    "gris" => "gris",
-                    "marron" => "marron",
-                    "autre" => "autre" ],
-                'multiple' => true,
-                'expanded' => true,
-                "attr" => [
-                    "class"=> ""
-                ]
-            ])
+            ->add('couleur', EntityType::class, [
+                'class' => Couleur::class,
+                'choice_label' => 'name',
+            ]
+            
+            
+            )
             ->add('taille'
             , ChoiceType::class,
             [
@@ -125,9 +113,7 @@ class ProduitType extends AbstractType
                         ])
                 ]
             ])
-            ->add('stock',
-                NULL, [
-             'mapped' => false, ])
+            
                 
         // le bouton
         ->add('save', SubmitType::class, [
