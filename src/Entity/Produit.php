@@ -24,21 +24,18 @@ class Produit
     #[ORM\Column]
     private ?float $prix = null;
 
-    #[ORM\Column]
-    private ?int $quantite = null;
-
-    #[ORM\Column(length: 10)]
-    private ?string $taille = null;
+    // #[ORM\Column]
+    // private ?int $quantite = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categorie = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Stock $stock = null;
+    // #[ORM\ManyToOne]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private ?Stock $stock = null;
 
-    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Image::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Image::class, orphanRemoval: true, cascade:["persist"])]
     private Collection $images;
 
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: CommandeProduit::class, orphanRemoval: true)]
@@ -48,12 +45,16 @@ class Produit
     #[ORM\JoinColumn(nullable: false)]
     private ?Couleur $couleur = null;
 
+    #[ORM\ManyToMany(targetEntity: Taille::class)]
+    private Collection $taille;
+
     
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->commandeProduits = new ArrayCollection();
+        $this->taille = new ArrayCollection();
         
     }
 
@@ -98,31 +99,18 @@ class Produit
         return $this;
     }
 
-    public function getQuantite(): ?int
-    {
-        return $this->quantite;
-    }
+    // public function getQuantite(): ?int
+    // {
+    //     return $this->quantite;
+    // }
 
-    public function setQuantite(int $quantite): self
-    {
-        $this->quantite = $quantite;
+    // public function setQuantite(int $quantite): self
+    // {
+    //     $this->quantite = $quantite;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-
-
-    public function getTaille(): ?string
-    {
-        return $this->taille;
-    }
-
-    public function setTaille(string $taille): self
-    {
-        $this->taille = $taille;
-
-        return $this;
-    }
 
     public function getCategorie(): ?Categorie
     {
@@ -136,17 +124,17 @@ class Produit
         return $this;
     }
 
-    public function getStock(): ?Stock
-    {
-        return $this->stock;
-    }
+    // public function getStock(): ?Stock
+    // {
+    //     return $this->stock;
+    // }
 
-    public function setStock(?Stock $stock): self
-    {
-        $this->stock = $stock;
+    // public function setStock(?Stock $stock): self
+    // {
+    //     $this->stock = $stock;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, Image>
@@ -216,6 +204,30 @@ class Produit
     public function setCouleur(?Couleur $couleur): self
     {
         $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Taille>
+     */
+    public function getTaille(): Collection
+    {
+        return $this->taille;
+    }
+
+    public function addTaille(Taille $taille): self
+    {
+        if (!$this->taille->contains($taille)) {
+            $this->taille->add($taille);
+        }
+
+        return $this;
+    }
+
+    public function removeTaille(Taille $taille): self
+    {
+        $this->taille->removeElement($taille);
 
         return $this;
     }

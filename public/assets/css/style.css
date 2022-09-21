@@ -57,10 +57,10 @@ body {
     font-size: 14px;
     font-weight: 500
 }
-.btn:hover{
+/* .btn:hover{
     background-color: #9d2c21;
 
-}
+} */
 .text {
     font-size: 23px;
     font-weight: bold
@@ -257,4 +257,15 @@ ol li, ul li {
 ol, ul {
     margin: 0;
     padding: 0;
+}
+
+/* bouton*/
+.bouton_ajout_produit{
+width: 210px;
+background-color: #c4936b;
+color: white;
+}
+.bouton_ajout_produit a:hover {
+
+    background-color: #b56422;
 }

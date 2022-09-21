@@ -3,6 +3,7 @@
 namespace App\Form;
 
 
+use App\Entity\Taille;
 use App\Entity\Couleur;
 use App\Entity\Produit;
 use App\Entity\Categorie;
@@ -31,57 +32,16 @@ class ProduitType extends AbstractType
             ->add('couleur', EntityType::class, [
                 'class' => Couleur::class,
                 'choice_label' => 'name',
-            ]
-            
-            
-            )
-            ->add('taille'
-            , ChoiceType::class,
-            [
-                'choices' => [
-                    "XS" => "XS", 
-                    "S" => "S", 
-                    "M" => "M", 
-                    "L" => "L",
-                    "XL" => "XL",
-                    "TU" => "TU",
-                    "80A" => "80A", 
-                    "80B" => "80B",
-                    "80C" => "80C",
-                    "80D" => "80D",
-                    "80E" => "80E",
-                    "80F" => "80F", 
-                    "85A" => "85A", 
-                    "85B" => "85B",
-                    "85C" => "85C",
-                    "85D" => "85D",
-                    "85E" => "85E",
-                    "85F" => "85F", 
-                    "90A" => "90A", 
-                    "90B" => "90B",
-                    "90C" => "90C",
-                    "90D" => "90D",
-                    "90E" => "90E",
-                    "90F" => "90F", 
-                    "95A" => "95A", 
-                    "95B" => "95B",
-                    "95C" => "95C",
-                    "95D" => "95D",
-                    "95E" => "95E",
-                    "95F" => "95F", 
-                    "100A" => "100A", 
-                    "100B" => "100B",
-                    "100C" => "100C",
-                    "100D" => "100D",
-                    "100E" => "100E",
-                    "100F" => "100F" 
-                ],
+            ])
+
+            ->add('taille', EntityType::class, [
+                'class' => Taille::class,
+                'choice_label' => 'name',
+                'mapped' => false,
                 'multiple' => true,
                 'expanded' => true,
-                "attr" => [
-                    "class"=> "d-flex"
-                ]
             ])
+            
             ->add('images',
                  FileType::class, [
                 'label' => false,
@@ -116,10 +76,11 @@ class ProduitType extends AbstractType
                 
         // le bouton
         ->add('save', SubmitType::class, [
-            'label' => 'Ajouter un nouveau produit'
+            'label' => 'Ajouter un nouveau produit',
+            'attr' => ['class' => 'bouton_ajout_produit'],           
         ]
         )
-    ;
+;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

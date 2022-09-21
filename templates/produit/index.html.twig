@@ -12,7 +12,7 @@
                 <th>Titre</th>
                 <th>Description</th>
                 <th>Prix</th>
-                <th>Quantite</th>
+                {# <th>Quantite</th> #}
                 <th>Couleur</th>
                 <th>Taille</th>
                 <th>actions</th>
@@ -25,9 +25,9 @@
                 <td>{{ produit.titre }}</td>
                 <td>{{ produit.description }}</td>
                 <td>{{ produit.prix }}</td>
-                <td>{{ produit.quantite }}</td>
-                <td>{{ produit.couleur }}</td>
-                <td>{{ produit.taille }}</td>
+                {# <td>{{ produit.quantite }}</td> #}
+                <td>{{ produit.couleur.name }}</td>
+                {# <td>{{ produit.taille.name }}</td> #}
                 <td>
                     <a href="{{ path('app_produit_show', {'id': produit.id}) }}">show</a>
                     <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>

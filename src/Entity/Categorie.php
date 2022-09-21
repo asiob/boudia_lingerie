@@ -21,9 +21,13 @@ class Categorie
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produit::class, orphanRemoval: true)]
     private Collection $produits;
 
+    #[ORM\ManyToMany(targetEntity: Taille::class, mappedBy: 'categorie')]
+    private Collection $tailles;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
+        $this->tailles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,6 +72,33 @@ class Categorie
             if ($produit->getCategorie() === $this) {
                 $produit->setCategorie(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Taille>
+     */
+    public function getTailles(): Collection
+    {
+        return $this->tailles;
+    }
+
+    public function addTaille(Taille $taille): self
+    {
+        if (!$this->tailles->contains($taille)) {
+            $this->tailles->add($taille);
+            $taille->addCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTaille(Taille $taille): self
+    {
+        if ($this->tailles->removeElement($taille)) {
+            $taille->removeCategorie($this);
         }
 
         return $this;

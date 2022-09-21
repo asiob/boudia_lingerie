@@ -7,6 +7,7 @@ use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Form\Produit1Type;
 use App\Repository\ProduitRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,7 +25,7 @@ class ProduitController extends AbstractController
     }
 
     #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ProduitRepository $produitRepository): Response
+    public function new(Request $request, ProduitRepository $produitRepository, EntityManagerInterface $manager): Response
     {
         // dump($request);
         $produit = new Produit();
@@ -32,16 +33,13 @@ class ProduitController extends AbstractController
         // dd($form);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $couleur = $form->getData();
-
-            dd($couleur);
+        if ($form->isSubmitted() ) {
             // on recupere les images ajoutées
             $images = $form->get('images')->getData();
             // on boucle sur les images
             foreach($images as $image){
                 // on génère un nouveau nom de fichier
-                $fichier = md5(uniqid()) . '.' . $images->guessExtension();
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
                 //on copie le fichier dans le dossier upload
                 $image->move(
                     $this->getParameter('images_directory'),
@@ -55,6 +53,10 @@ class ProduitController extends AbstractController
             }
 
             $produitRepository->add($produit, true);
+            // envoi dans la bdd
+            $manager->persist($produit);
+            $manager->flush();
+
 
             return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -76,7 +78,7 @@ class ProduitController extends AbstractController
     #[Route('/{id}/edit', name: 'app_produit_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Produit $produit, ProduitRepository $produitRepository): Response
     {
-        $form = $this->createForm(Produit1Type::class, $produit);
+        $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
