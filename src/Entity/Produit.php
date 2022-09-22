@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProduitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
@@ -17,9 +18,6 @@ class Produit
 
     #[ORM\Column(length: 100)]
     private ?string $titre = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $description = null;
 
     #[ORM\Column]
     private ?float $prix = null;
@@ -48,6 +46,9 @@ class Produit
     #[ORM\ManyToMany(targetEntity: Taille::class)]
     private Collection $taille;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
+
     
 
     public function __construct()
@@ -75,17 +76,6 @@ class Produit
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
 
     public function getPrix(): ?float
     {
@@ -228,6 +218,18 @@ class Produit
     public function removeTaille(Taille $taille): self
     {
         $this->taille->removeElement($taille);
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

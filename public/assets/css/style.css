@@ -78,8 +78,9 @@ body {
     font-weight: bold
 }
 .icones {
-    width: 45px;
+    width: 46px;
     display: flex;
+    justify-content: space-between;
 }
 
 .fa-regular {

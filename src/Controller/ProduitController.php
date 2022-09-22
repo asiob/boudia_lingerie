@@ -102,4 +102,17 @@ class ProduitController extends AbstractController
 
         return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
     }
+
+//essai de creation de chemin vers page -> apres ajout d'un produit il sera placé dans une autre page automatiquement
+
+
+// #[Route('/soutiens-gorge', name: 'app_produit_soutiens-gorge', methods: ['GET'])]
+// public function index(ProduitRepository $produitRepository): Response
+// {
+//     return $this->render('produit/soutiens-gorge.html.twig', [
+//         'produits' => $produitRepository->findAll(),
+//     ]);
+// }
+
+
 }

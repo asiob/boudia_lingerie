@@ -29,8 +29,8 @@
                 <td>{{ produit.couleur.name }}</td>
                 {# <td>{{ produit.taille.name }}</td> #}
                 <td>
-                    <a href="{{ path('app_produit_show', {'id': produit.id}) }}">show</a>
-                    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>
+                    <a href="{{ path('app_produit_show', {'id': produit.id}) }}">Voir</a>
+                    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
