@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PanierController!{% endblock %}
+{% block title %}Panier{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,27 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1> Panier</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Nessa/Documents/site-boudia/boudia_lingerie/src/Controller/PanierController.php'|file_link(0) }}">src/Controller/PanierController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Nessa/Documents/site-boudia/boudia_lingerie/templates/panier/index.html.twig'|file_link(0) }}">templates/panier/index.html.twig</a></code></li>
-    </ul>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+
+
+</table>
+{{dump()}}
+
+    
 </div>
 {% endblock %}

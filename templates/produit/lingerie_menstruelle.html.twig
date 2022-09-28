@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produit index{% endblock %}
+{# {% block title %}Hello HomeController!{% endblock %} #}
 
 {% block body %}
-<div class="zoneCard d-flex flex-wrap justify-content-around">  
+
+
+<div class="zoneCard d-flex flex-wrap justify-content-evenly ">  
     {% for produit in produits %}
 
 
@@ -11,7 +13,7 @@
         <div class="card h-50 "  style="width: 12rem " >
             <div class="d-flex">
             {# {% for image in produit.images %} #}
-            <img src="{{  asset('/uploads/' ~ produit.images[0].nom) }}" class="card-img-top" alt="..." width="200" height="200" >
+            <img src="{{  asset('/uploads/' ~ produit.images[0].nom) }}" class="card-img-top" alt="image" width="200" height="200" >
             {# {% endfor %}  #}
             </div>
 
@@ -39,7 +41,4 @@
 </div>       
     
 
-   
 {% endblock %}
-
-

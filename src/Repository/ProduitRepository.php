@@ -24,6 +24,7 @@ class ProduitRepository extends ServiceEntityRepository
     public function add(Produit $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
+       
 
         if ($flush) {
             $this->getEntityManager()->flush();
