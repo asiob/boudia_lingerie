@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Image;
 use App\Entity\Produit;
 use App\Form\ProduitType;
-use App\Form\Produit1Type;
 use App\Repository\CategorieRepository;
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,12 +24,11 @@ class ProduitController extends AbstractController
     #[Route('/', name: 'app_produit_index', methods: ['GET'])]
     public function index(ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
     {
-        // dd($categorieRepository->findOneBy([]));
         return $this->render('produit/index.html.twig', [
             'produits' => $produitRepository->findAll(),
         ]);
     }
-
+// route produits par catégorie
     #[Route('/lingerie_menstruelle', name: 'app_produit_lingerie_menstruelle', methods: ['GET'])]
     public function produitParMenstruelle(ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
     {
@@ -72,7 +70,6 @@ class ProduitController extends AbstractController
         // dump($request);
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
-        // dd($form);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() ) {
@@ -94,7 +91,7 @@ class ProduitController extends AbstractController
                 $produit->addImage($img);
             }
             
-            $produitRepository->add($produit, true);
+            // $produitRepository->add($produit, true);
             // envoi dans la bdd
             $manager->persist($produit);
             $manager->flush();
@@ -112,21 +109,19 @@ class ProduitController extends AbstractController
     #[Route('/{id}', name: 'app_produit_show', methods: ['GET'])]
     public function show(Produit $produit): Response
     {
-        // dd($produit);
         return $this->render('produit/show.html.twig', [
             'produit' => $produit,
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_produit_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Produit $produit, ProduitRepository $produitRepository): Response
+    public function edit(Request $request, Produit $produit, ProduitRepository $produitRepository, EntityManagerInterface $manager): Response
     {
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
-        // dd ($produit);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            // on recupere les images ajoutées
             $images = $form->get('images')->getData();
             // on boucle sur les images
             foreach($images as $image){
@@ -143,9 +138,12 @@ class ProduitController extends AbstractController
                 // $produit->setCouleur($couleur);
                 $produit->addImage($img);
             }
-
-
-            $produitRepository->add($produit, true);
+            
+            // $produitRepository->add($produit, true);
+            // envoi dans la bdd
+            $manager->persist($produit);
+            $manager->flush();
+          
             return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -155,40 +153,37 @@ class ProduitController extends AbstractController
         ]);
     }
 
+    //suprimer un produit entier
+
     #[Route('/{id}', name: 'app_produit_delete', methods: ['POST'])]
-    public function delete(Request $request, Produit $produit, ProduitRepository $produitRepository): Response
+    public function delete(Request $request, Produit $produit, ProduitRepository $produitRepository, EntityManagerInterface $manager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
-            $produitRepository->remove($produit, true);
+            // $produitRepository->remove($produit, true);
+
+            $manager->remove($produit);
+            $manager->flush();
         }
 
         return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
     }
 
-//essai de creation de chemin vers page -> apres ajout d'un produit il sera placé dans une autre page automatiquement
-
-
-// #[Route('/soutiens-gorge', name: 'app_produit_soutiens-gorge', methods: ['GET'])]
-// public function index(ProduitRepository $produitRepository): Response
-// {
-//     return $this->render('produit/soutiens-gorge.html.twig', [
-//         'produits' => $produitRepository->findAll(),
-//     ]);
-// }
 
 
 //pouvoir supprimer l'image que l'ont souhaite
 
 #[Route('/supprime/image/{id}', name: 'produit_delete_image', methods: ['POST', 'DELETE'])]
 public function deleteImage(Image $image, Request $request, EntityManagerInterface $manager ) {
+   //securiser
     $data = json_decode($request->getContent(), true);
         // on verifie si le token est valide
     if($this->isCsrfTokenValid('delete'.$image->getId(), $data['_token']))
     {
+        //on recupere le om de li'mage
         $nom = $image->getNom();
+        // on supprime
         unlink($this->getParameter('images_directory').'/'.$nom);
 
-        
         $manager->remove($image);
         $manager->flush();
 

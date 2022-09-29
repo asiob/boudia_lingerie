@@ -50,18 +50,18 @@ body {
 }
 
 .btn {
-    height: 35px;
-    width: 170px;
+    /* height: 35px;
+    width: 170px; */
     border: none;
     border-radius: 20px;
     background-color: #c4936b;
     font-size: 14px;
     font-weight: 500
 }
-/* .btn:hover{
-    background-color: #9d2c21;
+.all:hover{
+    background-color: #9d2c21 !important ;
 
-} */
+}
 .text {
     font-size: 23px;
     font-weight: bold

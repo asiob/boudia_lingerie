@@ -34,20 +34,20 @@ class ProduitType extends AbstractType
                 'choice_label' => 'name',
             ])
 
-            ->add('taille', EntityType::class, [
-                'class' => Taille::class,
-                'choice_label' => 'name',
-                'mapped' => false,
-                'multiple' => true,
-                'expanded' => true,
-            ])
+            // ->add('taille', EntityType::class, [
+            //     'class' => Taille::class,
+            //     'choice_label' => 'name',
+            //     'mapped' => false,
+            //     'multiple' => true,
+            //     'expanded' => true,
+            // ])
             
             ->add('images',
                  FileType::class, [
                 'label' => false,
                 'multiple' => true, 
                 'mapped' => false, 
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',
