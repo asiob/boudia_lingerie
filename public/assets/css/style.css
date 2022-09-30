@@ -97,18 +97,22 @@ body {
     margin-top: 50px;
     margin-bottom: 70px;
     display: flex !important;
+    
 
 }
+
 .card-img-top {
     display: flex;
     box-sizing: content-box;
-    object-fit: contain;
+    /* object-fit: contain; */
+    
 
 }
+
 a.card-link {
     text-decoration: none;
     color: #000;
-    padding-top: px;
+    
 }
 a.card-link:hover {
     text-decoration: none;

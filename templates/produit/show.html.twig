@@ -42,7 +42,7 @@
 
     <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">Modifier</a>
 
-    <a href="{{path('app_panier_index', {id: produit.id})}}">Ajouter au panier</a>
+    <a href="{{path('panier_index', {id: produit.id})}}">Ajouter au panier</a>
 
     {{ include('produit/_delete_form.html.twig') }}
 {% endblock %}

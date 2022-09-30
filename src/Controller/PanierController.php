@@ -67,7 +67,7 @@ class PanierController extends AbstractController
     public function remove(Produit $produit, $id, SessionInterface $session)
     {
        
-       // recuperer le panier
+      
        $panier = $session->get("panier", []);
        $id = $produit->getId(); 
 
@@ -79,8 +79,6 @@ class PanierController extends AbstractController
                 unset($panier[$id]);
             }   
 
-        
-        //    dd($session);
            //sauvegarder
            $session->set("panier", $panier);
            return $this->redirectToRoute("panier_index");
@@ -92,7 +90,7 @@ class PanierController extends AbstractController
     public function delete(Produit $produit, $id, SessionInterface $session)
     {
        
-       // recuperer le panier
+       
        $panier = $session->get("panier", []);
        $id = $produit->getId(); 
 
