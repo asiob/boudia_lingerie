@@ -21,21 +21,15 @@ class RegistrationFormType extends AbstractType
             ->add('email', TextType::class, [
                 'label' => 'Adresse mail',
             ])
-
-// Note : use Symfony\Component\Form\Extension\Core\Type\TextType;
-            // ->add('agreeTerms', CheckboxType::class, [
-            //     'mapped' => false,
-            //     'constraints' => [
-            //         new IsTrue([
-            //             'message' => 'You should agree to our terms.',
-            //         ]),
-            //     ],
-            // ])
-            ->add('plainPassword', PasswordType::class, [
+            ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                'label' => 'Mot de passe',
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'class' => 'form-control'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -48,6 +42,56 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('nom', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('prenom', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            
+            ->add('telephone', TextType::class, [
+                'label' => 'Téléphone',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('adresse', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('code_postal', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('ville', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('pays', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+
+// Note : use Symfony\Component\Form\Extension\Core\Type\TextType;
+            ->add('agreeTerms', CheckboxType::class, [
+                'label' => "Accepter les conditions d'utilisateur",
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Vous devez accepter nos conditions.',
+                    ]),
+                ],
+            ])
+            
         ;
     }
 
