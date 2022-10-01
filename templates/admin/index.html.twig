@@ -1,20 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Admin{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h2>{{ produit.titre }}</h2>
+ <img src="{{  asset('/uploads/' ~ produit.images[0].nom) }}" alt="image">
+    <table class="table">
+        <tbody>
+            
+            <tr>
+                <th>Titre</th>
+                <td>{{ produit.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description </th>
+                <td>{{ produit.description }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ produit.prix }} €</td>
+            </tr>
+            {# <tr>
+                <th>Quantite</th>
+                <td>{{ produit.quantite }}</td>
+            </tr> #}
+            <tr>
+                <th>Couleur</th>
+                <td>{{ produit.couleur.name }}</td>
+            </tr>
+            {# <tr>
+                <th>Taille</th>
+                <td>{{ produit.taille }}</td>
+            </tr> #}
+        </tbody>
+    </table>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <a href="{{ path('app_produit_index') }}">Retour à la liste</a>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Nessa/Documents/site-boudia/boudia_lingerie/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Nessa/Documents/site-boudia/boudia_lingerie/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">Modifier</a>
+
+   <a href="{{ path('app_produit_new', {'id': produit.id}) }}">Ajouter un nouveau produit</a>
+
+    {{ include('produit/_delete_form.html.twig') }}
 {% endblock %}
