@@ -25,7 +25,7 @@
             
             <div class="card-body d-flex justify-content-between">
                 <a href="{{path('app_produit_show', {id: produit.id})}}" class="card-link">Voir plus</a>
-                <a href="{{path('panier_add{id}', {id: produit.id})}}" class="card-link"><img src="{{asset('assets/images/sac-de-courses.png')}}" alt=""></a>
+                <a href="{{path("panier_add", {id:element.produit.id})}}" class="card-link"><img src="{{asset('assets/images/sac-de-courses.png')}}" alt="panier"></a>
             </div>
         </div>
     
