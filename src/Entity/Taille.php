@@ -21,6 +21,10 @@ class Taille
     #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'tailles')]
     private Collection $categorie;
 
+    #[ORM\Column(length: 255)]
+    private ?string $specificite = null;
+
+
     public function __construct()
     {
         $this->categorie = new ArrayCollection();
@@ -66,5 +70,18 @@ class Taille
 
         return $this;
     }
+
+    public function getSpecificite(): ?string
+    {
+        return $this->specificite;
+    }
+
+    public function setSpecificite(string $specificite): self
+    {
+        $this->specificite = $specificite;
+
+        return $this;
+    }
+
 
 }

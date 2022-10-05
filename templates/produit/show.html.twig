@@ -3,46 +3,50 @@
 {% block title %}Produit{% endblock %}
 
 {% block body %}
-    <h2>{{ produit.titre }}</h2>
- <img src="{{  asset('/uploads/' ~ produit.images[0].nom) }}" alt="image">
-    <table class="table">
-        <tbody>
+
+<div class="page-produit d-flex"> 
+    <div class="zone-image">
+        {% for galerie in produit.images %}
+            <img src="{{  asset('/uploads/' ~ galerie.nom) }}" alt="image">
+        {% endfor %} 
+        
+    </div>
+
+    <div class="zone-texte ps-3">
+        <h4>{{ produit.titre }}</h4>
+        
             {# <tr>
                 <th>Id</th>
                 <td>{{ produit.id }}</td>
             </tr> #}
-            <tr>
-                <th>Titre</th>
-                <td>{{ produit.titre }}</td>
-            </tr>
-            <tr>
-                <th>Description </th>
-                <td>{{ produit.description }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ produit.prix }} €</td>
-            </tr>
-            {# <tr>
-                <th>Quantite</th>
-                <td>{{ produit.quantite }}</td>
-            </tr> #}
-            <tr>
-                <th>Couleur</th>
-                <td>{{ produit.couleur.name }}</td>
-            </tr>
+                {# <h6>Description</h6>    #}
+            <p>{{ produit.description }}</p>        
+            
+
+            <p class="fw-bold">{{ produit.prix }} €</p>
+
+            <p>Couleur: {{ produit.couleur.name }}</p>
+            
+        
             {# <tr>
                 <th>Taille</th>
                 <td>{{ produit.taille }}</td>
             </tr> #}
-        </tbody>
-    </table>
+        
+        <button type="submit" class="btn all btn-primary mb-5"><a href="{{path("panier_add", {id:produit.id})}}"  class="text-decoration-none text-white ">Ajouter au panier</a></button> 
+
+    </div>
+
+
+</div>
+    
+ 
+    
 
     {# <a href="{{ path('app_produit_index') }}">Retour à la liste</a> #}
 
-    {# <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">Modifier</a> #}
+    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">Modifier</a>
 
-    <button type="submit" class="btn all btn-primary mb-5"><a href="{{path("panier_add", {id:produit.id})}}"  class="text-decoration-none text-white ">Ajouter au panier</a></button> 
 
     {# {{ include('produit/_delete_form.html.twig') }} #}
 

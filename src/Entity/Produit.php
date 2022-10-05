@@ -114,17 +114,6 @@ class Produit
         return $this;
     }
 
-    // public function getStock(): ?Stock
-    // {
-    //     return $this->stock;
-    // }
-
-    // public function setStock(?Stock $stock): self
-    // {
-    //     $this->stock = $stock;
-
-    //     return $this;
-    // }
 
     /**
      * @return Collection<int, Image>

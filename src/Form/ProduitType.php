@@ -43,11 +43,15 @@ class ProduitType extends AbstractType
             // ])
             
             ->add('images',
-                 FileType::class, [
+                // null,
+                // data_class => null,
+                 FileType::class,
+                [
+                // 'attr' => [],
                 'label' => false,
                 'multiple' => true, 
                 'mapped' => false, 
-                'required' => true,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',

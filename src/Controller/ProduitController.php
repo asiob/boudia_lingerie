@@ -75,6 +75,7 @@ class ProduitController extends AbstractController
         if ($form->isSubmitted() ) {
             // on recupere les images ajoutées
             $images = $form->get('images')->getData();
+            // dd($images);
             // on boucle sur les images
             foreach($images as $image){
                 // on génère un nouveau nom de fichier
@@ -91,7 +92,7 @@ class ProduitController extends AbstractController
                 $produit->addImage($img);
             }
             
-            // $produitRepository->add($produit, true);
+            $produitRepository->add($produit, true);
             // envoi dans la bdd
             $manager->persist($produit);
             $manager->flush();
