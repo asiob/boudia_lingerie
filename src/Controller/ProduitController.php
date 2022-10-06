@@ -60,6 +60,7 @@ class ProduitController extends AbstractController
         return $this->render('produit/soutiens-gorge.html.twig', [
             'produits' => $produitRepository->findBy([
                 'categorie' => $categorie->getId(),
+                // 'specificite' => $specificite->getId(), wx
             ]),
         ]);
     }
