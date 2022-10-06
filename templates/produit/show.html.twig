@@ -5,7 +5,7 @@
 
 {% block body %}
 
-	<div class="page-produit d-flex">
+	<div class="page-produit d-flex justify-content-around">
 		<div class="zone-image">
 			{% for galerie in produit.images %}
 				<img src="{{ asset('/uploads/' ~ galerie.nom) }}" alt="image">
@@ -13,7 +13,7 @@
 
 		</div>
 
-		<div class="zone-texte px-3 w-25" > 
+		<div class="zone-texte px-3 w-27" > 
 			<h4>{{ produit.titre }}</h4>
 
 			{# <tr>
@@ -34,7 +34,7 @@
   
     <div class="mb-3 d-flex">
       <label for="disabledSelect" class="form-label pe-3">Quantité</label>
-      <select id="disabledSelect" class="form-select" width:"15" >
+      <select id="disabledSelect" class="form-select"  >
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -57,7 +57,7 @@
 			{# zone livraison retour info #}
 			<div class="zoneInfoLivraison d-flex justify-content-between">
 				
-                <div class="card text-center" style="width: 12rem;">
+                <div class="card text-center" style="width: 8rem;">
 
 					<div class="card-body">
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-truck" viewbox="0 0 16 16">
@@ -69,7 +69,7 @@
 					</div>
                 </div>
 
-					<div class="card text-center" style="width: 10rem;">
+					<div class="card text-center" style="width: 8rem;">
 
 						<div class="card-body">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-seam" viewbox="0 0 16 16">
@@ -81,7 +81,7 @@
 						</div>
 					</div>
 
-					<div class="card text-center" style="width: 10rem;">
+					<div class="card text-center" style="width: 8rem;">
 
 						<div class="card-body">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-piggy-bank" viewbox="0 0 16 16">

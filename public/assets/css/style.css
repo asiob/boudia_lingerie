@@ -136,6 +136,10 @@ h6.card-title {
  margin-bottom: 0;
 }
 
+#disabledSelect {
+    width: 30px;
+}
+
 /* pour le footer*/
 
 /* body{margin-top:20px;} */

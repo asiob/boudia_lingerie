@@ -8,7 +8,9 @@ use App\Entity\Couleur;
 use App\Entity\Produit;
 use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Validator\Constraints;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\All;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -22,8 +24,8 @@ class ProduitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        
-                    //dd(array_values($couleursListe)[0]);
+
+        //dd(array_values($couleursListe)[0]);
         $builder
             ->add('titre')
             ->add('description', TextareaType::class)
@@ -41,29 +43,34 @@ class ProduitType extends AbstractType
             //     'multiple' => true,
             //     'expanded' => true,
             // ])
-            
-            ->add('images',
+
+            ->add(
+                'images',
                 // null,
                 // data_class => null,
-                 FileType::class,
+                FileType::class,
                 [
-                // 'attr' => [],
-                'label' => false,
-                'multiple' => true, 
-                'mapped' => false, 
-                'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '1024k',
-                        'mimeTypes' => [
-                            'image/jpg',
-                            'image/jpeg',
-                        ],
-                        'mimeTypesMessage' => 'merci de mettre une image valide'
-                    ])
-                ] 
-            ])
-            
+                    // 'attr' => [],
+                    'label' => false,
+                    'multiple' => true,
+                    'mapped' => false,
+                    'required' => false,
+                    'constraints' => [
+                        new All([
+                            'constraints' => [
+                                new File([
+                                    'maxSize' => '1024k',
+                                    'mimeTypes' => [
+                                        'image/jpg',
+                                        'image/jpeg'
+                                    ],
+                                    'mimeTypesMessage' => 'merci de mettre une image valide'
+                                ]),
+                            ],
+                        ]),
+                    ]
+                ])
+
             ->add('categorie', EntityType::class, [
                 'required' => true,
                 'label' => 'choisir une catégorie',
@@ -73,18 +80,20 @@ class ProduitType extends AbstractType
                     new NotBlank([
                         'message' => 'Veuillez choisir une catégorie'
 
-                        ])
+                    ])
                 ]
             ])
-            
-                
-        // le bouton
-        ->add('save', SubmitType::class, [
-            'label' => 'Ajouter un nouveau produit',
-            'attr' => ['class' => 'bouton_ajout_produit'],           
-        ]
-        )
-;
+
+
+            // le bouton
+            ->add(
+                'valider',
+                SubmitType::class,
+                [
+                    'label' => 'Ajouter un nouveau produit',
+                    'attr' => ['class' => 'bouton_ajout_produit'],
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
