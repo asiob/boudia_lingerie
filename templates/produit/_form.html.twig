@@ -12,14 +12,6 @@
 			<img src="{{ asset('/uploads/' ~ image.nom) }}" alt="image" width="150">
 
 
-			{# <form action="{{ path('produit_delete_image', {'id': image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}" method="post">
-				<input type="hidden" name="_method" value="DELETE" />
-				{# {{ form_widget(delete_form) }} 
-				{# <input type="submit" value="Delete" />
-			</form> #} 
-
-
-
 			 <a href="{{ path('produit_delete_image', {'id': image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">
 				Supprimer</a> 
 		</div>

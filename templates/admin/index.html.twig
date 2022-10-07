@@ -1,45 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Admin{% endblock %}
+{% block title %}Admin
+{% endblock %}
 
 {% block body %}
-    <h2>{{ produit.titre }}</h2>
- <img src="{{  asset('/uploads/' ~ produit.images[0].nom) }}" alt="image">
-    <table class="table">
-        <tbody>
-            
-            <tr>
-                <th>Titre</th>
-                <td>{{ produit.titre }}</td>
-            </tr>
-            <tr>
-                <th>Description </th>
-                <td>{{ produit.description }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ produit.prix }} €</td>
-            </tr>
-            {# <tr>
-                <th>Quantite</th>
-                <td>{{ produit.quantite }}</td>
-            </tr> #}
-            <tr>
-                <th>Couleur</th>
-                <td>{{ produit.couleur.name }}</td>
-            </tr>
-            {# <tr>
-                <th>Taille</th>
-                <td>{{ produit.taille }}</td>
-            </tr> #}
-        </tbody>
-    </table>
+	<h2>{{ produit.titre }}</h2>
+	<img src="{{ asset('/uploads/' ~ produit.images[0].nom) }}" alt="image">
+	<table class="table">
+		<tbody>
 
-    <a href="{{ path('app_produit_index') }}">Retour à la liste</a>
+			<tr>
+				<th>Titre</th>
+				<td>{{ produit.titre }}</td>
+			</tr>
+			<tr>
+				<th>Description
+				</th>
+				<td>{{ produit.description }}</td>
+			</tr>
+			<tr>
+				<th>Prix</th>
+				<td>{{ produit.prix }}
+					€</td>
+			</tr>
+			{# <tr>
+			                <th>Quantite</th>
+			                <td>{{ produit.quantite }}</td>
+			            </tr> #}
+			<tr>
+				<th>Couleur</th>
+				<td>{{ produit.couleur.name }}</td>
+			</tr>
+			{# <tr>
+			                <th>Taille</th>
+			                <td>{{ produit.taille }}</td>
+			            </tr> #}
+		</tbody>
+	</table>
 
-    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">Modifier</a>
 
-   <a href="{{ path('app_produit_new', {'id': produit.id}) }}">Ajouter un nouveau produit</a>
+	<a href="{{ path('app_produit_edit', {'id': produit.id}) }}">Modifier</a>
 
-    {{ include('produit/_delete_form.html.twig') }}
+	{{ include('produit/_delete_form.html.twig') }}
+
+	<a href="{{ path('app_produit_new', {'id': produit.id}) }}">Ajouter un nouveau produit</a>
+
+	<a href="{{ path('app_produit_index') }}">Retour à la liste</a>
+
+
 {% endblock %}
