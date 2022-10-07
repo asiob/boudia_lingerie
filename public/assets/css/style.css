@@ -1,4 +1,6 @@
-
+* {
+    box-sizing: border-box;
+}
 .container {
     width: 100%;
 }
@@ -137,9 +139,21 @@ h6.card-title {
 }
 
 #disabledSelect {
-    width: 30px;
+    width: 60px;
+   
 }
+.zone-image {
+    /* max-width: 100%; */
+    /* width: auto; */
+    height: auto;
+    display: block;
+    width: 70%;
 
+}
+.zone-texte {
+
+    width: 35%;
+}
 /* pour le footer*/
 
 /* body{margin-top:20px;} */

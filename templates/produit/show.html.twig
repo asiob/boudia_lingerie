@@ -8,7 +8,7 @@
 	<div class="page-produit d-flex justify-content-around">
 		<div class="zone-image">
 			{% for galerie in produit.images %}
-				<img src="{{ asset('/uploads/' ~ galerie.nom) }}" alt="image">
+				<img class="img-fluid" src="{{ asset('/uploads/' ~ galerie.nom) }}" alt="image">
 			{% endfor %}
 
 		</div>
@@ -32,7 +32,7 @@
 
 <form>
   
-    <div class="mb-3 d-flex">
+    <div class="quantite mb-3 d-flex">
       <label for="disabledSelect" class="form-label pe-3">Quantité</label>
       <select id="disabledSelect" class="form-select"  >
         <option>1</option>
@@ -51,11 +51,11 @@
 						                <td>{{ produit.taille }}</td>
 						            </tr> #}
 
-			<button type="submit" class="btn all btn-primary mb-5">
+			<button type="submit" class="btn all btn-primary mb-5 ">
 				<a href="{{path("panier_add", {id:produit.id})}}" class="text-decoration-none text-white ">Ajouter au panier</a>
 			</button>
 			{# zone livraison retour info #}
-			<div class="zoneInfoLivraison d-flex justify-content-between">
+			<div class="zoneInfoLivraison d-flex justify-content-around align-items-center">
 				
                 <div class="card text-center" style="width: 8rem;">
 

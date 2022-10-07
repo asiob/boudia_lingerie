@@ -181,9 +181,9 @@ public function deleteImage(Image $image, Request $request, EntityManagerInterfa
         // on verifie si le token est valide
     if($this->isCsrfTokenValid('delete'.$image->getId(), $data['_token']))
     {
-        //on recupere le om de li'mage
+        //on recupere le nom de li'mage
         $nom = $image->getNom();
-        // on supprime
+        // on supprime le fichier de la base
         unlink($this->getParameter('images_directory').'/'.$nom);
 
         $manager->remove($image);

@@ -11,7 +11,7 @@ for(link of links) {
         //on empeche la navigation
         e.preventDefault()
         //on demande une confirmation 
-        if(confirm("voulez-vous supprimer cette image")){
+        if(confirm("voulez-vous supprimer cette image?")){
             //on envoie une requete Ajax vers le href du lien avec la methose DELETE
                 fetch(this.getAttribute("href"),{
                     method: " DELETE",
