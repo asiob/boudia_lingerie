@@ -145,6 +145,7 @@ class ProduitController extends AbstractController
             // envoi dans la bdd
             $manager->persist($produit);
             $manager->flush();
+            // $manager->addFlash('success', 'Modifié avec succes');
           
             return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -183,6 +184,7 @@ public function deleteImage(Image $image, Request $request, EntityManagerInterfa
     {
         //on recupere le nom de li'mage
         $nom = $image->getNom();
+        
         // on supprime le fichier de la base
         unlink($this->getParameter('images_directory').'/'.$nom);
 

@@ -14,7 +14,7 @@ for(link of links) {
         if(confirm("voulez-vous supprimer cette image?")){
             //on envoie une requete Ajax vers le href du lien avec la methose DELETE
                 fetch(this.getAttribute("href"),{
-                    method: " DELETE",
+                    method: "DELETE",
                     headers: {
                         'X-Requested-With':"XMLHttpRequest",
                         "Content-Type": "application/json"
@@ -28,7 +28,7 @@ for(link of links) {
                         this.parentElement.remove()
                         else    
                             alert(data.error)
-                })
+                }).catch(e => alert(e))
 
             }
         })
