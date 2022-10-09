@@ -56,6 +56,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column(length: 100)]
+    private ?string $Name = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $firstname = null;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
@@ -245,4 +251,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
 }

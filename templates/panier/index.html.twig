@@ -33,6 +33,7 @@
             <td>{{ element.produit.prix}} € </td>
             <td> {{ element.quantite}} </td>
             <td>{{ element.quantite * element.produit.prix }} € </td>
+
             <td> 
                 <a href="{{path("panier_add", {id:element.produit.id})}}"
                 class="btn all btn-success" >
@@ -81,7 +82,7 @@
 
             
         </div>
-
+{# 
         <div class="zone-paiement">
             <p>SOUS-TOTAL</p>
         <ul class="js-availableShippingMethodsList">
@@ -92,7 +93,7 @@
             <li><span class="paragraph-body">Domicile</span><span class="paragraph-body u-no-wrap mg-l-s">à partir de 4,90 €</span></li>
         </ul>
 
-        </div>
+        </div> #}
     </div>
 </div>
 {% endblock %}
