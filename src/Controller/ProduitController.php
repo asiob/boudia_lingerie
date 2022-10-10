@@ -52,6 +52,29 @@ class ProduitController extends AbstractController
             ]),
         ]);
     }
+    #[Route('/string', name: 'app_produit_string', methods: ['GET'])]
+    public function produitParString(ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
+    {
+        $categorie = $categorieRepository->findOneBy(["nom"=>'String']);
+        
+        return $this->render('produit/string.html.twig', [
+            'produits' => $produitRepository->findBy([
+                'categorie' => $categorie->getId(),
+            ]),
+        ]);
+    }
+
+    #[Route('/boxer', name: 'app_produit_boxer', methods: ['GET'])]
+    public function produitParBoxer(ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
+    {
+        $categorie = $categorieRepository->findOneBy(["nom"=>'Boxer']);
+        
+        return $this->render('produit/boxer.html.twig', [
+            'produits' => $produitRepository->findBy([
+                'categorie' => $categorie->getId(),
+            ]),
+        ]);
+    }
     #[Route('/soutiens-gorge', name: 'app_produit_soutiens-gorge', methods: ['GET'])]
     public function produitParSoutiens(ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
     {
