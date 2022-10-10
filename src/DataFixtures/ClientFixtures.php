@@ -15,7 +15,7 @@ class ClientFixtures extends Fixture
         $client = Array();
         for ($i=0; $i <30 ; $i++) { 
             $client[$i] = new Client();
-            $client[$i]->setNom($faker->word());
+            $client[$i]->setName($faker->word());
             $client[$i]->setPrenom($faker->word());
             $client[$i]->setMail($faker->word());
             $client[$i]->setTelephone($faker->word());

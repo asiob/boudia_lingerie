@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EspaceClientController!{% endblock %}
+{# {% block title %}Hello TestController!{% endblock %} #}
 
 {% block body %}
 <style>
@@ -9,12 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Nessa/Documents/site-boudia/boudia_lingerie/src/Controller/EspaceClientController.php'|file_link(0) }}">src/Controller/EspaceClientController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Nessa/Documents/site-boudia/boudia_lingerie/templates/espace_client/index.html.twig'|file_link(0) }}">templates/espace_client/index.html.twig</a></code></li>
-    </ul>
+   <h1>Bienvenue sur votre espace client</h1>
+    {% if is_granted('ROLE_USER') %}
+        <a href=" {{ path('app_logout') }} ">Se déconnecter</a>
+    {% else %}
+        <a href=" {{ path('app_register') }} ">S'inscrire</a>
+        <a href=" {{ path('app_login') }} ">Se connecter</a>
+    {% endif %}
 </div>
 {% endblock %}

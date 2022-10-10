@@ -96,14 +96,21 @@ body {
 }
 
 /* card pour les produits*/
+span.p-livraison {
+    font-size: 12px;
+}
+span.h-livraison {
+    font-size: 14px;
+}
 
-.zoneCard {
+
+/* .zoneCard {
     margin-top: 50px;
     margin-bottom: 70px;
-    display: flex !important;
+    /* display: flex !important; 
     
 
-}
+} */
 
 .card-img-top {
     display: flex;
@@ -142,17 +149,29 @@ h6.card-title {
     width: 60px;
    
 }
+.page-produit{
+    width: auto;
+  
+ 
+}
 .zone-image {
     /* max-width: 100%; */
     /* width: auto; */
-    height: auto;
-    display: block;
-    width: 70%;
+    /* height: 200px;
+    width: 400px; */
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: fit-content(400px) fit-content(400px) 1fr;
+    grid-gap: 5px;
+    box-sizing: border-box;
+    height: 200px;
+    width: 100%;
 
 }
 .zone-texte {
 
-    width: 35%;
+    width: 30%;
+   
 }
 /* pour le footer*/
 
