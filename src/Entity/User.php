@@ -21,7 +21,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $nom = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 100)]
     private ?string $prenom = null;
@@ -56,25 +56,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 100)]
-    private ?string $Name = null;
-
-    #[ORM\Column(length: 100)]
-    private ?string $firstname = null;
-
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
     }
 
-    public function getNom(): ?string
+    public function getName(): ?string
     {
-        return $this->nom;
+        return $this->name;
     }
 
-    public function setNom(string $nom): self
+    public function setName(string $name): self
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }

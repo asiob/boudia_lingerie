@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
@@ -42,7 +43,8 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('nom', TextType::class, [
+            ->add('name', TextType::class, [
+                'label' => 'Nom',
                 'attr' => [
                     'class' => 'form-control'
                 ]
@@ -91,6 +93,16 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('register', SubmitType::class, 
+            [
+                'label' => "S'incrire",
+                'attr' => [
+                    'class' => 'btn btn-primary'
+                ]
+               
+                    ]
+            
+            )
             
         ;
     }
@@ -99,6 +111,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'allow_extra_fields' => true 
         ]);
     }
 }
