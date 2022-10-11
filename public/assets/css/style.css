@@ -31,8 +31,12 @@ body {
     color: #000 !important;
     font-weight: bold;
     margin-left: 40px
+    
 }
-
+a.nav-link:hover {
+    color: #b56422 !important;
+   
+}
 .form-control {
     height: 32px;
     width: 100%;
@@ -94,7 +98,20 @@ body {
     margin-top: 5px;
 
 }
+.bi-bag {
 
+    color: #000;
+   
+}
+.bi-bag:hover {
+
+    color: #b56422;
+   
+}
+.fa-regular:hover {
+    color: #b56422;
+
+}
 /* card pour les produits*/
 span.p-livraison {
     font-size: 12px;
@@ -154,31 +171,15 @@ h6.card-title {
   
  
 }
-/* .bordure {
-    border-bottom: rgba(128, 128, 128, 0.24) solid 1px ;
-   padding-bottom: 10px;
-} */
+
+
 .zone-image {
     /* max-width: 100%; */
-    width: 31%; 
+    width: 33%; 
     display: flex;
     justify-content: flex-start;
     height: fit-content;
     margin-left: 10px;
-    
-    
-    /* display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: fit-content(400px) fit-content(400px) 1fr;
-    grid-gap: 5px;
-    /* align-items: center; 
-    justify-items: center;
-    box-sizing: border-box;
-    justify-self: center;
-    height: 200px;
-    width: 100%;
-    */
-    
 
 }
 .zone-texte {
