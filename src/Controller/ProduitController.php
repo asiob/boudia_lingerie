@@ -7,6 +7,7 @@ use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Repository\CategorieRepository;
 use App\Repository\ProduitRepository;
+use App\Repository\TailleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,14 +66,18 @@ class ProduitController extends AbstractController
     }
 
     #[Route('/boxer', name: 'app_produit_boxer', methods: ['GET'])]
-    public function produitParBoxer(ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
+    public function produitParBoxer(ProduitRepository $produitRepository, CategorieRepository $categorieRepository, TailleRepository $tailleRepository): Response
     {
         $categorie = $categorieRepository->findOneBy(["nom"=>'Boxer']);
+        $taille = $tailleRepository->findBy(["specificite"=>'autre']);
+        
         
         return $this->render('produit/boxer.html.twig', [
             'produits' => $produitRepository->findBy([
                 'categorie' => $categorie->getId(),
+                
             ]),
+            'taille_boxer' => $taille,
         ]);
     }
     #[Route('/soutiens-gorge', name: 'app_produit_soutiens-gorge', methods: ['GET'])]
@@ -132,11 +137,18 @@ class ProduitController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_produit_show', methods: ['GET'])]
-    public function show(Produit $produit): Response
+    public function show(Produit $produit, TailleRepository $tailleRepository): Response
     {
+        $tailles = $tailleRepository->findBy(
+            ['name' => 'autre']
+        );
+        
+
         return $this->render('produit/show.html.twig', [
             'produit' => $produit,
         ]);
+
+
     }
 
     #[Route('/{id}/edit', name: 'app_produit_edit', methods: ['GET', 'POST'])]

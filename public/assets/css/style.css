@@ -154,18 +154,30 @@ h6.card-title {
   
  
 }
+/* .bordure {
+    border-bottom: rgba(128, 128, 128, 0.24) solid 1px ;
+   padding-bottom: 10px;
+} */
 .zone-image {
     /* max-width: 100%; */
-    /* width: auto; */
-    /* height: 200px;
-    width: 400px; */
-    display: grid;
+    width: 35%; 
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    
+    
+    /* display: grid;
     grid-auto-flow: row;
     grid-template-columns: fit-content(400px) fit-content(400px) 1fr;
     grid-gap: 5px;
+    /* align-items: center; 
+    justify-items: center;
     box-sizing: border-box;
+    justify-self: center;
     height: 200px;
     width: 100%;
+    */
+    
 
 }
 .zone-texte {
