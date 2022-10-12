@@ -113,6 +113,7 @@ a.nav-link:hover {
 
 }
 /* card pour les produits*/
+
 span.p-livraison {
     font-size: 12px;
 }
@@ -136,7 +137,11 @@ span.h-livraison {
     
 
 }
+/* page about*/
+.text-bg-primary {
 
+    background-color: #c4936b !important;
+}
 a.card-link {
     text-decoration: none;
     color: #000;
