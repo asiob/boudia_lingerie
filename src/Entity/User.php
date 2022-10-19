@@ -45,6 +45,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100)]
     private ?string $ville = null;
 
+    #[ORM\Column(length: 100)]
+    private ?string $pays = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -183,6 +186,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVille(string $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getPays(): ?string
+    {
+        return $this->pays;
+    }
+
+    public function setPays(string $pays): self
+    {
+        $this->pays = $pays;
 
         return $this;
     }
