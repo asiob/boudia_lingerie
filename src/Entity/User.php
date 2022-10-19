@@ -2,17 +2,12 @@
 
 namespace App\Entity;
 
-use App\Entity\Commande;
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -20,32 +15,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 100)]
-    private ?string $name = null;
-
-    #[ORM\Column(length: 100)]
-    private ?string $prenom = null;
-
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
-
-    #[ORM\Column(length: 100)]
-    private ?string $telephone = null;
-
-    #[ORM\Column(length: 100)]
-    private ?string $adresse = null;
-
-    #[ORM\Column(length: 100)]
-    private ?string $codePostal = null;
-
-    #[ORM\Column(length: 100)]
-    private ?string $ville = null;
-
-    #[ORM\Column(length: 100)]
-    private ?string $pays = null;
-
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class, orphanRemoval: true)]
-    private Collection $commandes;
 
     #[ORM\Column]
     private array $roles = [];
@@ -56,34 +27,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    public function __construct()
-    {
-        $this->commandes = new ArrayCollection();
-    }
+    #[ORM\Column(length: 100)]
+    private ?string $name = null;
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
+    #[ORM\Column(length: 100)]
+    private ?string $prenom = null;
 
-    public function setName(string $name): self
-    {
-        $this->name = $name;
+    #[ORM\Column(length: 100)]
+    private ?string $telephone = null;
 
-        return $this;
-    }
+    #[ORM\Column(length: 255)]
+    private ?string $adresse = null;
 
-    public function getPrenom(): ?string
-    {
-        return $this->prenom;
-    }
+    #[ORM\Column(length: 10)]
+    private ?string $code_postal = null;
 
-    public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
+    #[ORM\Column(length: 100)]
+    private ?string $ville = null;
 
     public function getId(): ?int
     {
@@ -101,68 +61,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    
-    public function getTelephone(): ?string
-    {
-        return $this->telephone;
-    }
-
-    public function setTelephone(string $telephone): self
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): self
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    public function getCodePostal(): ?string
-    {
-        return $this->codePostal;
-    }
-
-    public function setCodePostal(string $codePostal): self
-    {
-        $this->codePostal = $codePostal;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(string $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getPays(): ?string
-    {
-        return $this->pays;
-    }
-
-    public function setPays(string $pays): self
-    {
-        $this->pays = $pays;
-
-        return $this;
-    }
-
 
     /**
      * A visual identifier that represents this user.
@@ -216,34 +114,76 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-     /**
-     * @return Collection<int, Commande>
-     */
-    public function getCommandes(): Collection
+
+    public function getName(): ?string
     {
-        return $this->commandes;
+        return $this->name;
     }
 
-    public function addCommande(Commande $commande): self
+    public function setName(string $name): self
     {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes->add($commande);
-            $commande->setUser($this);
-        }
+        $this->name = $name;
 
         return $this;
     }
 
-    public function removeCommande(Commande $commande): self
+    public function getPrenom(): ?string
     {
-        if ($this->commandes->removeElement($commande)) {
-            // set the owning side to null (unless already changed)
-            if ($commande->getUser() === $this) {
-                $commande->setUser(null);
-            }
-        }
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
 
         return $this;
     }
 
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?string
+    {
+        return $this->code_postal;
+    }
+
+    public function setCodePostal(string $code_postal): self
+    {
+        $this->code_postal = $code_postal;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
 }
