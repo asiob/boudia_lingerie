@@ -112,12 +112,31 @@ a.nav-link:hover {
     color: #b56422;
 
 }
-/* page user */
-.card-header {
+a {
+    text-decoration: none !important;
+    color: #000;
+}
+a:hover  {
     color: #b56422;
 }
-a {
-    text-decoration: none;
+
+/* page user */
+.card-header {
+    background-color: #eac4a4 !important;
+
+}
+.list-group list-group-flush {
+    background-color: #eeddcb !important;
+}
+ul li a .list-group-item {
+    text-decoration: none !important;
+}
+.espace-client{
+    width: 1000px !important;
+}
+.card-header a{
+    text-decoration: none !important;
+
 }
 
 /* card pour les produits*/

@@ -1,17 +1,166 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon compte!{% endblock %}
+{# {% block title %}Hello TestController!{% endblock %} #}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
 
-<div class="example-wrapper">
-    
+	<div class="example-wrapper">
 
-    Bienvenue, vous êtes connecté(e) à votre espace 
-    
-</div>
+		<div class="espace-client d-flex">
+
+			
+
+			<div class="card mt-5" style="width: 18rem; height : 13rem">
+				<div class="card-header">
+					<a href="">
+						<i class="fa-regular fa-user"></i>
+						Mon profil</a>
+				</div>
+
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                        </svg>
+						<a href="">
+							Mes achats</a>
+					</li>
+					<li class="list-group-item">
+						<i class="fa-regular fa-heart"></i>
+						<a href="">Mes favoris</a>
+					</li>
+                    <li class="list-group-item">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rulers" viewBox="0 0 16 16">
+  <path d="M1 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5v-1H2v-1h4v-1H4v-1h2v-1H2v-1h4V9H4V8h2V7H2V6h4V2h1v4h1V4h1v2h1V2h1v4h1V4h1v2h1V2h1v4h1V1a1 1 0 0 0-1-1H1z"/>
+</svg>
+						<a href="">  Mes mensurations</a>
+					</li>
+					<li class="list-group-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+  <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+</svg>
+						<a href="{{ path('app_logout') }}">Déconnection</a>
+					</li>
+				</ul>
+			</div>
+            <div class="zone-user-photo ms-4">
+            
+                <h4>Bienvenue sur votre espace client</h4>
+                <img class="mt-2" src="{{asset('assets/images/user.jpg')}}"  alt="image">
+                
+            </div>
+			
+		</div>
+	</div>
+
+<div class="footerReinsurance mt-5 ">
+	<div class="brandReinsurance ">
+		<div class="brandReinsurance__wrapper ">
+			<ul class="brandReinsurance__list d-flex justify-content-around ">
+				<li class="brandReinsurance__item">
+
+					<div class="content-asset bodyDesktop ">
+						<p style="text-align:center; max-width: 70px; margin: auto;"><img alt="" src="https://www.undiz.com/on/demandware.static/-/Library-Sites-UNDIZ_sharedLibrary/default/dw1d1307f7/Checkout/sav.png" title=""></p>
+						<p style="text-align: center; text-transform: lowercase; font-size: 13px; font-family: rubik;">30 jours pour essayer !</p>
+					</div>
+				</li>
+				<li class="brandReinsurance__item">
+
+					<div class="content-asset bodyDesktop ">
+						<p style="text-align:center; max-width: 70px; margin: auto;"><img alt="" src="https://www.undiz.com/on/demandware.static/-/Library-Sites-UNDIZ_sharedLibrary/default/dw79789912/Checkout/paiement.png" title=""></p>
+						<p style="text-align: center; text-transform: lowercase; font-size: 13px; font-family: rubik;">paiement sécurisé et 3x sans frais</p>
+					</div>
+				</li>
+				<li class="brandReinsurance__item">
+
+					<div class="content-asset bodyDesktop ">
+						<p style="text-align:center; max-width: 70px; margin: auto;"><img alt="" src="https://www.undiz.com/on/demandware.static/-/Library-Sites-UNDIZ_sharedLibrary/default/dwacbe2c91/Checkout/delivery.png" title=""></p>
+						<p style="text-align: center; text-transform: lowercase; font-size: 13px; font-family: rubik;">expédition 24/48h</p>
+					</div>
+				</li>
+				<li class="brandReinsurance__item">
+
+					<div class="content-asset bodyDesktop ">
+						<p style="text-align:center; max-width: 70px; margin: auto;"><img alt="" src="https://www.undiz.com/on/demandware.static/-/Library-Sites-UNDIZ_sharedLibrary/default/dw3469ca50/Checkout/retours-gratuits-img.png" title=""></p>
+						<p style="text-align: center; text-transform: lowercase; font-size: 13px; font-family: rubik;">
+							livraison &amp; retours gratuits en magasin</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="newsletterWrapper mt-3 ">
+
+			<div class="content-asset bodyDesktop ">
+				<style>
+
+					.FooterNswTitleWrapper {
+
+						text-align: center;
+
+						padding: 0 30px;
+
+						max-width: 480px;
+
+						margin: 0 auto;
+
+					}
+
+					.FooterNswTitleWrapper h3 {
+
+						margin: 4px auto 12px;
+
+					}
+				</style>
+				<section class="FooterNswTitleWrapper">
+					<svg xmlns="http://www.w3.org/2000/svg" width="34" height="35" viewbox="0 0 34 35" fill="none">
+						<path d="M0.513208 14.2915C0.513208 15.1254 1.41132 15.2537 1.60377 15.2537H7.82641L8.98113 13.8424C9.9434 12.5594 11.2906 11.6613 12.8302 11.1481L16.7434 9.86506C17.5774 9.60846 18.3472 9.22355 19.117 8.71034C20.3358 7.94053 21.4264 6.78582 22.1962 5.56695L24.1208 2.42355L24.1849 2.3594H24.3774C25.3396 2.3594 26.1736 3.12921 26.1736 4.15563V4.86129C26.1736 5.82355 25.917 6.78582 25.4038 7.55563L22.7736 12.0462C21.1698 12.3669 19.9509 13.7783 19.9509 15.5103C19.9509 16.2802 20.2075 16.9217 20.5925 17.499C19.4377 18.0764 18.6679 19.2952 18.6679 20.6424C18.6679 20.7707 18.6038 23.5292 14.4981 23.5292V25.4537C17.4491 25.4537 18.9245 24.299 19.7585 23.1443C20.0151 23.4009 20.2717 23.5934 20.5925 23.7217C20.2075 24.299 19.9509 25.0047 19.9509 25.7103C19.9509 26.8651 20.5283 27.9556 21.4264 28.5971C20.9132 29.2386 20.5925 30.0085 20.5925 30.8424C20.5925 31.1632 20.6566 31.4839 20.7208 31.8047H17.1925C13.7283 31.8047 10.4566 30.2651 8.14717 27.6349L7.89057 27.4424H1.02642C0.641509 27.4424 0 27.5066 0 28.4047C0 29.4952 1.02642 29.3669 1.02642 29.3669H6.99245C9.62264 32.2537 13.2792 33.8575 17.1925 33.8575H22.0679C22.6453 34.2424 23.3509 34.499 24.0566 34.499H27.7774C29.5094 34.499 31.1132 33.2802 31.3698 31.5481C31.4981 30.5858 31.3057 29.6877 30.7925 28.982C31.9472 28.4047 32.717 27.1858 32.717 25.8386C32.717 25.0688 32.4604 24.4273 32.0755 23.85C33.2302 23.2726 34 22.0537 34 20.7066C34 19.3594 33.2302 18.1405 32.0755 17.5632C32.5887 16.7934 32.8453 15.7669 32.5887 14.6764C32.2038 13.0726 30.6642 12.0462 29.0604 12.0462H25.0189L27.0075 8.64619C27.7132 7.55563 28.0981 6.20846 28.0981 4.92544V4.21978C28.0981 2.16695 26.4302 0.499023 24.3774 0.499023H24.2491C23.5434 0.499023 22.9019 0.883929 22.517 1.46129L20.5925 4.60468C19.9509 5.6311 19.117 6.52921 18.0906 7.17072C17.5132 7.55563 16.8717 7.87638 16.166 8.06883L12.2528 9.35185C10.3283 9.99336 8.72453 11.1481 7.50566 12.6877L6.99245 13.3292H1.66792C0.70566 13.3292 0.513208 13.7783 0.513208 14.2915ZM23.4792 13.9707H29.1887C29.9585 13.9707 30.6642 14.4198 30.7925 15.1896C31.0491 16.216 30.2792 17.1783 29.2528 17.1783H23.5434C22.7736 17.1783 22.0679 16.7292 21.9396 15.9594C21.683 14.933 22.4528 13.9707 23.4792 13.9707ZM22.2604 19.1028H23.4792H29.2528H30.4717C31.2415 19.1028 31.9472 19.5519 32.0755 20.3217C32.3321 21.3481 31.5623 22.3103 30.5358 22.3103H29.2528H23.4792H22.1962C21.1698 22.3103 20.4 21.3481 20.6566 20.3217C20.7849 19.5519 21.4906 19.1028 22.2604 19.1028ZM30.7925 26.2236C30.6 26.9292 29.8943 27.4424 29.1887 27.4424H27.9698H24.1208H23.5434C22.7736 27.4424 22.0679 26.9934 21.9396 26.2236C21.683 25.1971 22.4528 24.2349 23.4792 24.2349H29.2528C30.2792 24.2349 31.0491 25.1971 30.7925 26.2236ZM27.9698 32.5745H24.1849C23.4151 32.5745 22.7094 32.1254 22.5811 31.3556C22.3245 30.3292 23.0943 29.3669 24.1208 29.3669H27.9057C28.6755 29.3669 29.3811 29.816 29.5094 30.5858C29.766 31.6122 28.9962 32.5745 27.9698 32.5745Z" fill="black"></path>
+					</svg>
+					<h3 class="h3-title">good vibes, good news</h3>
+					<p>on pense à vous avec nos bons plans, nos ventes privées, alors inscrivez-vous à notre newsletter.</p>
+				</section>
+			</div>
+			<form method="POST" id="footerNewsletterForm" action="/on/demandware.store/Sites-UNDIZ_FR-Site/fr_FR/Newsletter-Subscribe" novalidate="">
+				<div class="formfield js-newsletterEmailField">
+					<div class="form__group text-center ">
+						<div class="form__field">
+							<input type="email" class="form__input " placeholder="exemple@mail.com" pattern="^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$" id="newsletter_email" data-field-id="email" required="" name="newsletter_email" data-error="Veuillez saisir une adresse e-mail valide">
+							<label for="newsletter_email" class="form__label">
+								
+							</label>
+							{# <span class="form__validIcon js-validInput">
+								<i class="icon icon-check"></i>
+							</span>
+						</div>
+						<div class="invalid-feedback hidden"></div>
+					</div> #}
+					<input type="submit" value="OK" class="submit -disabled btn btn-primary " autocomplete="off">
+					<p class="footerNewsletterMsg"></p>
+				</div>
+			</form>
+			<p class="footerNewsletterGdpr">
+				En vous inscrivant, vous acceptez que Boudia lingerie traite vos données personnelles, conformément à sa
+				<span class="default-link -small js-showCGVAcceptTrigger">Charte de confidentialité</span>, aux fins de vous adresser des communications commerciales. Vous pouvez à tout moment vous désabonner, en cliquant sur le lien "se désinscrire" figurant en bas de chaque e-mail.
+			</p>
+		</div>
+{% if is_granted('ROLE_USER') %}
+				<a href=" {{ path('app_logout') }} ">Se déconnecter</a>
+			{% else %}
+				<a href=" {{ path('app_register') }} ">S'inscrire</a>
+				<a href=" {{ path('app_login') }} ">Se connecter</a>
+			{% endif %}
+
 {% endblock %}
