@@ -3,18 +3,69 @@
 {# {% block title %}Hello TestController!{% endblock %} #}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
 
-<div class="example-wrapper">
-   <h1>Bienvenue sur votre espace client</h1>
-    {% if is_granted('ROLE_USER') %}
-        <a href=" {{ path('app_logout') }} ">Se déconnecter</a>
-    {% else %}
-        <a href=" {{ path('app_register') }} ">S'inscrire</a>
-        <a href=" {{ path('app_login') }} ">Se connecter</a>
-    {% endif %}
-</div>
+	<div class="example-wrapper">
+
+		<div class="espace-client d-flex w-100">
+
+			
+
+			<div class="card  mt-4" style="width: 18rem; height : 13rem">
+				<div class="card-header">
+					<a href="">
+						<i class="fa-regular fa-user"></i>
+						Mon profil</a>
+				</div>
+
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                        </svg>
+						<a href="">
+							Mes achats</a>
+					</li>
+					<li class="list-group-item">
+						<i class="fa-regular fa-heart"></i>
+						<a href="">Mes favoris</a>
+					</li>
+                    <li class="list-group-item">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rulers" viewBox="0 0 16 16">
+  <path d="M1 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5v-1H2v-1h4v-1H4v-1h2v-1H2v-1h4V9H4V8h2V7H2V6h4V2h1v4h1V4h1v2h1V2h1v4h1V4h1v2h1V2h1v4h1V1a1 1 0 0 0-1-1H1z"/>
+</svg>
+						<a href="">  Mes mensurations</a>
+					</li>
+					<li class="list-group-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+  <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+</svg>
+						<a href="{{ path('app_logout') }}">Déconnection</a>
+					</li>
+				</ul>
+			</div>
+            <div class="zone-user-photo ms-4">
+                <h5>Bienvenue sur votre espace client</h5>
+                <img src="{{asset('assets/images/user.jpg')}}"  alt="image">
+            </div>
+			{% if is_granted('ROLE_USER') %}
+				<a href=" {{ path('app_logout') }} ">Se déconnecter</a>
+			{% else %}
+				<a href=" {{ path('app_register') }} ">S'inscrire</a>
+				<a href=" {{ path('app_login') }} ">Se connecter</a>
+			{% endif %}
+		</div>
+	</div>
 {% endblock %}

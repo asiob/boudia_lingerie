@@ -112,6 +112,14 @@ a.nav-link:hover {
     color: #b56422;
 
 }
+/* page user */
+.card-header {
+    color: #b56422;
+}
+a {
+    text-decoration: none;
+}
+
 /* card pour les produits*/
 
 span.p-livraison {

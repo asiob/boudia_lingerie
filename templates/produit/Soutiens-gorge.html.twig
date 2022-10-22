@@ -11,7 +11,7 @@
 
 
     <a href="{{path('app_produit_show', {id: produit.id})}}" class="card-link">
-        <div class="card h-50 mt-4"  style="width: 12rem " >
+        <div class="card h-50 mt-4 me-2"  style="width: 12rem " >
             <div class="d-flex">
             {# {% for image in produit.images %} #}
             <img src="{{  asset('/uploads/' ~ produit.images[0].nom) }}" class="card-img-top" alt="image" width="200" height="200" >
