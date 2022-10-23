@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 
 use Symfony\Component\HttpFoundation\Response;
+use App\Controller\Admin\ProduitCrudController;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -12,10 +13,21 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {
+    public function __construct(
+        private AdminUrlGenerator $adminUrlGenerator
+    ){
+    }
+
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        return parent::index();
+        // return parent::index();
+        $url = $this->adminUrlGenerator
+            ->setController(ProduitCrudController::class)
+            ->generateUrl();
+
+            return $this->redirect($url);
+        // return $this->redirect($adminUrlGenerator->setController(OneOfYourCrudController::class)->generateUrl());
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
