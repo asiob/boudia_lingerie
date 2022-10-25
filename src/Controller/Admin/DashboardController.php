@@ -2,12 +2,15 @@
 
 namespace App\Controller\Admin;
 
-use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
-use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use App\Entity\Produit;
 use Symfony\Component\HttpFoundation\Response;
+use App\Controller\Admin\ProduitCrudController;
 use Symfony\Component\Routing\Annotation\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -55,7 +58,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('E-commerce');
         yield MenuItem::section('Produits');
         yield MenuItem::subMenu('Actions','fas fa-bars')->setSubItems([
-            MenuItem::linkToCrud('Add product', 'fas fa-plus', Produit::class)
+            MenuItem::linkToCrud('Ajouter un produit', 'fas fa-plus', Produit::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Voir les produits', 'fas fa-eye', Produit::class),
         ]) ;
 
 
