@@ -14,7 +14,7 @@ class DashboardController extends AbstractDashboardController
     public function __construct(private AdminUrlGenerator $adminUrlGenerator) {
         
     }
-
+// grace à easy admin
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -42,6 +42,8 @@ class DashboardController extends AbstractDashboardController
         // return $this->render('some/path/my-dashboard.html.twig');
     }
 
+
+// pour personnaliser et configurer le tableau de bord
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
@@ -50,7 +52,13 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::section('E-commerce');
+        yield MenuItem::section('Produits');
+        yield MenuItem::subMenu('Actions','fas fa-bars')->setSubItems([
+            MenuItem::linkToCrud('Add product', 'fas fa-plus', Produit::class)
+        ]) ;
+
+
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
