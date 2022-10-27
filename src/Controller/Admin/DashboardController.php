@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Produit;
+use App\Entity\Categorie;
 use Symfony\Component\HttpFoundation\Response;
 use App\Controller\Admin\ProduitCrudController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -61,7 +62,10 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Ajouter un produit', 'fas fa-plus', Produit::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir les produits', 'fas fa-eye', Produit::class),
         ]) ;
-
+        yield MenuItem::subMenu('Categorie','fas fa-bars')->setSubItems([
+            MenuItem::linkToCrud('Ajouter une categorie', 'fas fa-plus', Categorie::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Voir les Categories', 'fas fa-eye', Categorie::class),
+        ]) ;
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
