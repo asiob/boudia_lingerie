@@ -51,5 +51,6 @@ class Image
     
     public function __toString() {
         return $this->getNom();
+        
     }
 }

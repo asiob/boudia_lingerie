@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class ProduitCrudController extends AbstractCrudController
 {
@@ -31,6 +32,7 @@ class ProduitCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             MoneyField::new('prix')->setCurrency('EUR'),
             ColorField::new('couleur')->showSample(false),
+            AssociationField::new('categorie'),
             // ImageField::new('image')
             //     ->setBasePath('uploads')
             //     ->setUploadDir('public/uploads')
