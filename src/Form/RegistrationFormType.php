@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use PhpParser\Node\Expr\New_;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -31,12 +32,10 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-control'
                 ],
                 'constraints'=> [
-                    new NotBlank([
-                            'message' => 'merci d\'entrer un e-mail',
-                        ]),
+                     
                     new Length([
-                        'min'=>6, 
-                        'minMessage'=>'Votre mot de passe doit avoir minimum 6 caractères',
+                        'min'=>12, 
+                        'minMessage'=>'Votre mot de passe doit avoir minimum 12 caractères',
                         'max'=>4096,  
                     ])   , 
                     ],
@@ -46,13 +45,29 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Nom',
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'constraints'=> [
+                    
+                    new Length([
+                        'min'=>2, 
+                        'minMessage'=>'Votre nom doit avoir minimum 2 caractères',
+                        'max'=>40,  
+                    ])   , 
+                    ],
             ])
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom',
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'constraints'=> [
+                    
+                    new Length([
+                        'min'=>2, 
+                        'minMessage'=>'Votre prénom doit avoir minimum 2 caractères',
+                        'max'=>40,  
+                    ])   , 
+                    ],
             ])
             
             ->add('telephone', TextType::class, [
@@ -64,7 +79,15 @@ class RegistrationFormType extends AbstractType
             ->add('adresse', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'constraints'=> [
+                    
+                    new Length([
+                        'min'=>5, 
+                        'minMessage'=>'Votre adresse doit avoir minimum 5 caractères',
+                        'max'=>4050,  
+                    ])   , 
+                    ],
             ])
             ->add('code_postal', TextType::class, [
                 'attr' => [

@@ -29,7 +29,7 @@
 <div class="panier dp-flex">
     <div class="produits-du-panier"> 
         <tr>
-            <td>{{ element.produit.titre }}</td>
+            <td> <a href="{{path("app_produit_show", {id:element.produit.id})}}"> {{ element.produit.titre }}</a></td>
             <td>{{ element.produit.prix}} € </td>
             <td> {{ element.quantite}} </td>
             <td>{{ element.quantite * element.produit.prix }} € </td>
