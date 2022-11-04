@@ -9,6 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
@@ -27,7 +29,17 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Mot de passe',
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'constraints'=> [
+                    new NotBlank([
+                            'message' => 'merci d\'entrer un e-mail',
+                        ]),
+                    new Length([
+                        'min'=>6, 
+                        'minMessage'=>'Votre mot de passe doit avoir minimum 6 caractères',
+                        'max'=>4096,  
+                    ])   , 
+                    ],
             ])
             
             ->add('name', TextType::class, [
@@ -56,7 +68,8 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('code_postal', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'maxlength' => 5
                 ]
             ])
             ->add('ville', TextType::class, [
